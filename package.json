@@ -4,7 +4,7 @@
   "description": "Interface for test helpers.",
   "main": "AVAHook.js",
   "scripts": {
-    "test": "ava"
+    "test": "NODE_PATH=. ava"
   },
   "repository": {
     "type": "git",
