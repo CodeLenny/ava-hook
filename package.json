@@ -1,0 +1,27 @@
+{
+  "name": "ava-hook",
+  "version": "0.0.0",
+  "description": "Interface for test helpers.",
+  "main": "AVAHook.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CodeLenny/ava-hook.git"
+  },
+  "author": "Ryan Leonard (http://ryanleonard.us)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeLenny/ava-hook/issues"
+  },
+  "homepage": "https://github.com/CodeLenny/ava-hook#readme",
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "ava": "^0.22.0"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0"
+  }
+}
