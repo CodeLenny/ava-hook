@@ -38,14 +38,14 @@ let db1 = new AVATingoDB({
     db: "db1",
   },
 });
-db1.apply();
+db1.register();
 
 let db2 = new AVATingoDB({
   variables: {
     db: "db2"
   },
 });
-db2.apply();
+db2.register();
 
 test("can create data", t => {
   const first = t.context.db1;
