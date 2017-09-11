@@ -16,7 +16,9 @@
     "url": "https://github.com/CodeLenny/ava-hook/issues"
   },
   "homepage": "https://github.com/CodeLenny/ava-hook#readme",
-  "dependencies": {},
+  "dependencies": {
+    "lodash.merge": "^4.6.0"
+  },
   "peerDependencies": {
     "ava": "^0.22.0"
   },
