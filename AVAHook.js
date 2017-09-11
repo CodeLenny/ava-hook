@@ -1,3 +1,5 @@
+const ava = require("ava");
+
 /**
  * Options to configure an instance of an {@link AVAHook}.
  * @typedef {Object} AVAHookOptions
@@ -36,6 +38,41 @@ class AVAHook {
    * @param {AVAHookOptions} opts options to configure this {@link AVAHook}.
   */
   constructor(opts) {
+  }
+
+  /**
+   * Register all stage hooks with AVA.
+  */
+  register() {
+    this.beforeEach();
+    this.afterEach();
+  }
+
+  /**
+   * Register each stage hook with AVA from the given list.
+   * @param {StageList} list the stages to register
+   * @param {String} type the AVA hook to register stages with.
+  */
+  registerList(list, type) {
+    for(const stage in list) {
+      if(typeof this[stage] !== "function") { continue; }
+      const name = list[stage];
+      ava[type](name, t => this[stage](t));
+    }
+  }
+
+  /**
+   * Register each `beforeEach()` stage with AVA.
+  */
+  beforeEach() {
+    return this.registerList(this.constructor.setup, "beforeEach");
+  }
+
+  /**
+   * Register each `afterEach()` stage with AVA.
+  */
+  afterEach() {
+    return this.registerList(this.constructor.cleanup, "afterEach");
   }
 
 }

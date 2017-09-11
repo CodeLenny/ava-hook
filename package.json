@@ -4,7 +4,7 @@
   "description": "Interface for test helpers.",
   "main": "AVAHook.js",
   "scripts": {
-    "test": "NODE_PATH=. ava"
+    "test": "NODE_PATH=. nyc --reporter html --reporter text ava"
   },
   "repository": {
     "type": "git",
@@ -16,12 +16,14 @@
     "url": "https://github.com/CodeLenny/ava-hook/issues"
   },
   "homepage": "https://github.com/CodeLenny/ava-hook#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "ava": "^0.22.0"
   },
   "devDependencies": {
-    "ava": "^0.22.0"
+    "ava": "^0.22.0",
+    "nyc": "^11.1.0",
+    "proxyquire": "^1.8.0",
+    "sinon": "^1.17.7"
   }
 }
