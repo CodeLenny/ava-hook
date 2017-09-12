@@ -1,3 +1,3 @@
 nodeenv env
-source env/bin/activate
+. env/bin/activate
 npm install -g jsdoc
