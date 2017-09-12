@@ -42,7 +42,7 @@ def install_jsdoc():
     print(install_output)
     npm_bin = re.search("Bin Dir: '(.*)'", install_output).group(1)
     sys.path.append(npm_bin)
-    print("JSDoc installed and added to '$PATH'.");
+    print("JSDoc installed and added to '$PATH' (" + npm_bin + ")");
 
 install_jsdoc()
 
