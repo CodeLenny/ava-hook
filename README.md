@@ -27,10 +27,22 @@ that will be added to `t.context`, and also configure how the hook is implemente
 
 ## Example Hook
 
-End-user usage:
+### TingoDB Database Hook
+
+#### End-User
+
+Let's draft a test that needs to use two different databases.
+We'll be using a (fake) `ava-tingo-db` library, which will setup two mock databases for us.
+
+We'll start with requiring `ava`:
 
 ```js
 const test = require("ava");
+```
+
+Now we can grab the `ava-tingo-db` library, and create two database instances.
+
+```js
 const AVATingoDB = require("ava-tingo-db");
 
 let db1 = new AVATingoDB({
@@ -38,21 +50,33 @@ let db1 = new AVATingoDB({
     db: "db1",
   },
 });
-db1.register();
 
 let db2 = new AVATingoDB({
   variables: {
     db: "db2"
   },
 });
-db2.register();
+```
 
+To reduce side-effects, the constructor doesn't make any changes to AVA.
+Intead, the `register()` method will create `beforeEach()` statements that will setup both databases.
+
+```js
+db1.register();
+db2.register();
+```
+
+Now we can use both databases in a test:
+
+```js
 test("can create data", t => {
   const first = t.context.db1;
   const second = t.context.db2;
   // ...
 });
 ```
+
+#### `ava-tingo-db` Module
 
 Definition of the module:
 
