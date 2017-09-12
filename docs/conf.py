@@ -15,6 +15,7 @@
 import sys
 import os
 import subprocess
+import re
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -36,7 +37,9 @@ extensions = ["sphinx_js"]
 primary_domain = "js"
 
 def setup(app):
-    subprocess.call("sh install_jsdoc.sh", shell=True)
+    install_output = subprocess.check_output("sh install_jsdoc.sh", shell=True)
+    npm_bin = re.search("Bin Dir: '(.*)'", install_output).group(1)
+    sys.path.append(npm_bin)
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
