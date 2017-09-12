@@ -36,10 +36,12 @@ extensions = ["sphinx_js"]
 
 primary_domain = "js"
 
-def setup(app):
+def install_jsdoc():
     install_output = subprocess.check_output("sh install_jsdoc.sh", shell=True)
     npm_bin = re.search("Bin Dir: '(.*)'", install_output).group(1)
     sys.path.append(npm_bin)
+
+install_jsdoc()
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
