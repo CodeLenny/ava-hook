@@ -36,7 +36,7 @@ extensions = ["sphinx_js"]
 primary_domain = "js"
 
 def setup(app):
-    subprocess.call("sh install_jsdoc.sh")
+    subprocess.call("sh install_jsdoc.sh", shell=True)
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
