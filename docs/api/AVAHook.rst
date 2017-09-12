@@ -2,6 +2,6 @@
 ``AVAHook``
 ===========
 
-.. :autoclass:: AVAHook
+.. autoclass:: AVAHook
   :members:
   :private-members:
