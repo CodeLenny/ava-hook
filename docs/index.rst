@@ -1,22 +1,14 @@
-.. AVA Hook documentation master file, created by
-   sphinx-quickstart on Tue Sep 12 19:25:54 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+========
+AVA Hook
+========
 
-Welcome to AVA Hook's documentation!
-====================================
-
-Contents:
+Documentation
+=============
 
 .. toctree::
    :maxdepth: 2
-
-
-
-Indices and tables
-==================
+   
+   intro
+   api
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
