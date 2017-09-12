@@ -37,9 +37,12 @@ extensions = ["sphinx_js"]
 primary_domain = "js"
 
 def install_jsdoc():
+    print("Installing JSDoc...")
     install_output = subprocess.check_output("sh install_jsdoc.sh", shell=True)
+    print(install_output)
     npm_bin = re.search("Bin Dir: '(.*)'", install_output).group(1)
     sys.path.append(npm_bin)
+    print("JSDoc installed and added to '$PATH'.");
 
 install_jsdoc()
 
