@@ -9,6 +9,7 @@ Documentation
    :maxdepth: 2
    
    intro
+   guide/index
    api
 
 * :ref:`genindex`
