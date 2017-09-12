@@ -6,6 +6,22 @@ This is an unofficial format for the [AVA][] library, and has no connection with
 
 ## Features
 
+For developers writing AVA hooks, `ava-hook` provides a well-featured and tested container to add your setup and cleanup
+code to.
+Instead of re-inventing the wheel in every library, `ava-hook` provides a user-focused interface, generic documentation
+for using the hook, and extra configuration to control the functionality of the hook.
+
+- Simple syntax for defining the stages of your hook (both for setup and for cleanup)
+- Variable registration system to ensure that variables in `t.context` are free from conflict
+- *(soon)* User-visible configuration variables
+- *(soon)* Dependency system to use other `ava-hook` modules for setup
+
+`ava-hook` is also focused on being flexible both for the hook developer as well as the end user.
+Most of the features above are customizable, based on options provided.
+Additionally, most parts of `ava-hook` are over-ridable, both by the hook developer and the end user.
+
+## Overview
+
 AVA hooks have three core sections:
 
 - **Dependencies** allow hooks to create instances of other hooks.  For instance, a file-system based database may need
