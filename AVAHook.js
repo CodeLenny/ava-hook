@@ -110,6 +110,14 @@ class AVAHook {
   }
 
   /**
+   * Get the globally reserved name for a variable from the non-unique name used for this instnace.
+   * @param {String} name the local name of the variable.
+  */
+  variable(name) {
+    return this._variables[name];
+  }
+
+  /**
    * Register each stage hook with AVA from the given list.
    * @param {StageList} list the stages to register
    * @param {String} type the AVA hook to register stages with.
