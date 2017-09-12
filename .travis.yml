@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  - 6
+  - 7
+  - 8
+  - node
+
+after_success:
+  - npm install codecov
+  - $(npm bin)/nyc report --reporter=lcovonly
+  - $(npm bin)/codecov
