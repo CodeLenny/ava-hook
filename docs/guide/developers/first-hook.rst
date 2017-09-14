@@ -70,6 +70,7 @@ When variable conflicts are detected, `ava-hook` will automatically assign us an
     
   }
 
+.. end
 Define Hooks
 ============
 
