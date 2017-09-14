@@ -3,13 +3,9 @@ Writing a Hook
 ==============
 
 This is intended to be a quick-start guide to get you writing an AVA hook using the `ava-hook` library.
+We'll be creating an `AVAHook` that sets up a simple Express server.
 
 For a more in-depth overview, please see the :doc:`/overview`.
-
-Overview
-========
-
-This guide will be creating an AVA hook that will create a simple Express server.
 
 Environment
 ===========
