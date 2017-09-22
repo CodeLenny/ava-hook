@@ -14,7 +14,7 @@ for using the hook, and extra configuration to control the functionality of the 
 - Simple syntax for defining the stages of your hook (both for setup and for cleanup)
 - Variable registration system to ensure that variables in `t.context` are free from conflict
 - *(soon)* User-visible configuration variables
-- *(soon)* Dependency system to use other `ava-hook` modules for setup
+- Dependency system to use other `ava-hook` modules for setup
 
 `ava-hook` is also focused on being flexible both for the hook developer as well as the end user.
 Most of the features above are customizable, based on options provided.
