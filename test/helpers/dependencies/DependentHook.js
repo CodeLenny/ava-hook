@@ -29,8 +29,8 @@ class DependentHook extends AVAHook {
 
   merge(t) {
     t.context[this.variable("mergedVariable")] = {
-      base: this.dependency("base").variable("baseVariable"),
-      dependent: this.variable("dependentVariable"),
+      base: t.context[this.dependency("base").variable("baseVariable")],
+      dependent: t.context[this.variable("dependentVariable")],
     };
   }
 
