@@ -6,3 +6,4 @@
   :maxdepth: 1
   
   developers/first-hook
+  developers/hook-dependencies
