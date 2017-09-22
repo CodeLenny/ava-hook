@@ -2,8 +2,39 @@ const ava = require("ava");
 const merge = require("lodash.merge");
 
 /**
+ * Configuration for a single dependency.
+ * @typedef {Object} DependencyOptions
+ * @property {AVAHook} hook The hook to use for this dependency.  Required if creating a new hook.  Otherwise can be
+ *   omitted if configuring an existing dependency.
+ * @property {Object} [variables] Variable configuration to control the dependency.
+*/
+
+/**
+ * Configuration options to control a {@link AVAHook} dependency from a parent {@link AVAHook}.
+ * @typedef {Object<DependencyOptions>} DependencyList configuration for dependencies.
+ *   Name each dependency with a custom string.  Map names to either {@link DependencyOptions} or `null` to disable
+ *   the dependency.
+ * @example <caption>Two Express servers as dependencies</caption>
+ * const dependency = {
+ *   core: {
+ *     hook: AVAExpressServer,
+ *     variables: {
+ *       app: "core",
+ *     },
+ *   },
+ *   secondary: {
+ *     hook: AVAExpressServer,
+ *     variables: {
+ *       app: "backupApp",
+ *     },
+ *   },
+ * };
+*/
+
+/**
  * Options to configure an instance of an {@link AVAHook}.
  * @typedef {Object} AVAHookOptions
+ * @property {DependencyList} dependencies Configuration for dependencies.
  * @property {Object} [variables] Requested names for variables used in this hook.
 */
 
@@ -18,6 +49,14 @@ const merge = require("lodash.merge");
  * @abstract
 */
 class AVAHook {
+
+  /**
+   * Dependencies that should be run before this hook.
+   * @return {DependencyList} the dependencies for this hook.
+  */
+  static get dependencies() {
+    return {};
+  }
 
   /**
    * The names of variables that will be used inside this hook, and exported when the hook is complete.
@@ -93,9 +132,35 @@ class AVAHook {
    * Register all stage hooks with AVA, and reserve variables.
   */
   register() {
+    this.registerDependencies();
     this.reserveVariables();
     this.beforeEach();
     this.afterEach();
+  }
+
+  /**
+   * Register all dependencies for this hook.
+   * @todo Pass configuration to dependencies
+   * @todo Test passing configuration
+  */
+  registerDependencies() {
+    if(!this._dependencies) { this._dependencies = {}; }
+    for(const dependencyName in this.constructor.dependencies) {
+      if(this._dependencies[dependencyName]) { continue; }
+      const Hook = this.constructor.dependencies[dependencyName];
+      const dependency = new Hook();
+      dependency.register();
+      this._dependencies[dependencyName] = dependency;
+    }
+  }
+
+  /**
+   * Get a local dependency by name.
+   * @param {String} name the name of the dependency
+   * @return {AVAHook} the hook instance.
+  */
+  dependency(name) {
+    return this._dependencies[name];
   }
 
   /**
